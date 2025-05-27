@@ -61,9 +61,9 @@ class Offer(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f'{self.project} freelancer is {self.freelancer}'
+        return f'{self.project}, {self.freelancer}'
 class Review(models.Model):
-    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='reviews')
+    project = models.ForeignKey(Project, on_delete=models.CASCADE)
     reviewer = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name='reviewer_user')
     target = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name='target_user')
     rating = models.PositiveSmallIntegerField(choices=[(i, str(i)) for i in range(1, 6)])

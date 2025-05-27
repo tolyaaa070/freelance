@@ -72,18 +72,18 @@ class OtherUserProfileSerializers(serializers.ModelSerializer):
         model = UserProfile
         fields = ['last_name','role']
 
-
-
 class SocialLinkSerializers(serializers.ModelSerializer):
     class Meta:
         model = SocialLink
         fields = ['social_links','social_name']
 class ProjectListAPISerializers(serializers.ModelSerializer):
+    category = CategoriesSerializers()
     class Meta:
         model = Project
-        fields = ['id','title','budget','client']
+        fields = ['id','title','category','client']
 
 class ProjectDetailSerializers(serializers.ModelSerializer):
+    skills_required = SkillSerializers(read_only=True, many=True)
     class Meta:
         model = Project
         fields = ['description','title','budget','deadline','status','category','skills_required','created_at','client']
@@ -103,6 +103,8 @@ class OfferSerializers(serializers.ModelSerializer):
         fields = ['project','freelancer','message','proposed_budget','proposed_deadline','created_at']
 
 class ReviewsSerializers(serializers.ModelSerializer):
+    reviewer_user = OtherUserProfileSerializers(read_only=True)
+    target_user = OtherUserProfileSerializers(read_only=True)
     class Meta:
         model =Review
-        fields = ['project','reviewer','target','rating','comment','created_at']
+        fields = ['project','reviewer_user','target','rating','comment','created_at']
