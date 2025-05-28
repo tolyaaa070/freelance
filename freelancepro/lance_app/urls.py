@@ -1,6 +1,7 @@
 from .views import (OthersProfileViewSet,EditMyProfileViewSet,MyProfileViewSet,SkillViewSet,
                     ProjectListAPIViewSet,ProjectEditViewSet,ProjectCreateViewSet,CustomLoginView,LogoutView,
-                    OfferEditViewSet,OfferCreateViewSet,OfferListAPIViewSet,MyOfferViewSet,ReviewsViewSet,ProjectDetailViewSet,MyProjectView,CategoriesViewSet,CategoryDetailViewSet,SocialLinkViewSet,RegisterView)
+                    OfferEditViewSet,OfferCreateViewSet,OfferListAPIViewSet,MyOfferViewSet,ReviewsViewSet,ProjectDetailViewSet,MyProjectView,CategoriesViewSet,
+                    CategoryDetailViewSet,SocialLinkViewSet,RegisterView)
 from rest_framework import routers
 from django.urls import path,include
 

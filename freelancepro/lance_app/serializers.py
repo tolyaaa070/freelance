@@ -9,7 +9,7 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserProfile
         fields = ('username', 'email', 'password', 'first_name', 'last_name',
-                  'age', 'phone_number', 'status', 'date_registered')
+                 'role', )
         extra_kwargs = {'password': {'write_only': True}}
 
     def create(self, validated_data):
@@ -26,6 +26,7 @@ class UserSerializer(serializers.ModelSerializer):
             'access': str(refresh.access_token),
             'refresh': str(refresh),
         }
+
 
 
 class LoginSerializer(serializers.Serializer):
@@ -48,6 +49,7 @@ class LoginSerializer(serializers.Serializer):
             'access': str(refresh.access_token),
             'refresh': str(refresh),
         }
+
 class SkillSerializers(serializers.ModelSerializer):
     class Meta:
         model = Skill
@@ -107,4 +109,4 @@ class ReviewsSerializers(serializers.ModelSerializer):
     target_user = OtherUserProfileSerializers(read_only=True)
     class Meta:
         model =Review
-        fields = ['project','reviewer_user','target','rating','comment','created_at']
+        fields = ['project','reviewer_user','target_user','rating','comment','created_at']

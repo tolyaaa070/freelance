@@ -89,7 +89,7 @@ class MyProjectView(generics.ListAPIView):
 class ProjectCreateViewSet(generics.CreateAPIView):
     queryset = Project.objects.all()
     serializer_class = ProjectDetailSerializers
-    permission_classes = [CheckRole]
+    # permission_classes = [CheckRole]
 
 class ProjectEditViewSet(generics.RetrieveUpdateDestroyAPIView):
     queryset = Project.objects.all()
